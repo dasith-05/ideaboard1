@@ -1,9 +1,13 @@
 const ideaInput = document.getElementById('ideaInput');
 const addBtn = document.getElementById('addBtn');
 const board = document.getElementById('board');
+const ideaCount = document.getElementById('ideaCount');
 
-// Load ideas from LocalStorage
-let ideas = JSON.parse(localStorage.getItem('savedIdeas')) || [];
+let ideas = JSON.parse(localStorage.getItem('beautyIdeas')) || [];
+
+function updateCounter() {
+    ideaCount.innerText = ideas.length;
+}
 
 function render() {
     board.innerHTML = '';
@@ -11,22 +15,25 @@ function render() {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-            <button class="delete-btn" onclick="deleteIdea(${index})">&times;</button>
             <p>${idea.text}</p>
-            <div class="date">${idea.date}</div>
+            <div class="card-footer">
+                <span class="date">${idea.date}</span>
+                <span class="delete-btn" onclick="deleteIdea(${index})">×</span>
+            </div>
         `;
         board.appendChild(card);
     });
-    localStorage.setItem('savedIdeas', JSON.stringify(ideas));
+    localStorage.setItem('beautyIdeas', JSON.stringify(ideas));
+    updateCounter();
 }
 
 function addIdea() {
     const text = ideaInput.value.trim();
-    if (text === "") return;
+    if (!text) return;
 
     const newIdea = {
         text: text,
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
     };
 
     ideas.unshift(newIdea);
@@ -40,9 +47,6 @@ function deleteIdea(index) {
 }
 
 addBtn.addEventListener('click', addIdea);
-ideaInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') addIdea();
-});
+ideaInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') addIdea(); });
 
-// Initial Render
 render();

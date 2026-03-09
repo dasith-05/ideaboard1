@@ -3,26 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro IdeaBoard</title>
+    <title>Minimalist Ideaboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="brand">
-                <h1>IdeaBoard<span>.</span></h1>
-                <p>Simple. Professional. Productive.</p>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">💡 Idea<span>Flow</span></div>
+            <nav>
+                <div class="nav-item active">All Ideas</div>
+                <div class="nav-item">Favorites</div>
+                <div class="nav-item">Archive</div>
+            </nav>
+            <div class="stats">
+                <p>Total Ideas</p>
+                <h2 id="ideaCount">0</h2>
             </div>
-            <div class="input-group">
-                <input type="text" id="ideaInput" placeholder="Write a new idea...">
-                <button id="addBtn">Add Idea</button>
-            </div>
-        </header>
+        </aside>
 
-        <main id="board" class="board-grid">
-            </main>
+        <main class="content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" id="ideaInput" placeholder="Capture a spark of genius...">
+                    <button id="addBtn">Create</button>
+                </div>
+            </header>
+
+            <div id="board" class="masonry-grid">
+                </div>
+        </main>
     </div>
 
     <script src="script.js"></script>
