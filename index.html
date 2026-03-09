@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pro IdeaBoard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+
+    <div class="container">
+        <header>
+            <div class="brand">
+                <h1>IdeaBoard<span>.</span></h1>
+                <p>Simple. Professional. Productive.</p>
+            </div>
+            <div class="input-group">
+                <input type="text" id="ideaInput" placeholder="Write a new idea...">
+                <button id="addBtn">Add Idea</button>
+            </div>
+        </header>
+
+        <main id="board" class="board-grid">
+            </main>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
